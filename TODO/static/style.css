@@ -1,0 +1,141 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #fdf6e3;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.notebook-container {
+    width: 500px;
+    max-width: 95%;
+    background-color: #fffde7;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    text-align: center;
+    color: #ff7043;
+    margin-bottom: 20px;
+}
+
+.message {
+    text-align: center;
+    color: #388e3c;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Add Task */
+.add-task {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.add-task input[type=text] {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 2px solid #ffcc80;
+    outline: none;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.add-task input[type=text]:focus {
+    border-color: #ff9800;
+}
+
+.add-task button {
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: #ff9800;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add-task button:hover {
+    background-color: #fb8c00;
+}
+
+/* Task List */
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-list li {
+    background-color: #fff8dc;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    border-left: 5px solid #ffcc80;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Only strikeout task text, not buttons */
+.task-text.completed {
+    text-decoration: line-through;
+    color: #555;
+    opacity: 0.8;
+}
+
+.task-text {
+    margin-left: 8px;
+}
+
+/* Task Actions */
+.task-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.task-actions button {
+    padding: 5px 8px;
+    border-radius: 6px;
+    border: none;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: 0.2s;
+}
+
+.task-actions button[name="update_status"][value="completed"] {
+    background-color: #4caf50;
+}
+
+.task-actions button[name="update_status"][value="completed"]:hover {
+    background-color: #388e3c;
+}
+
+.task-actions button[name="update_status"][value="pending"] {
+    background-color: #ff5722;
+}
+
+.task-actions button[name="update_status"][value="pending"]:hover {
+    background-color: #e64a19;
+}
+
+.task-actions button[name="delete_task"] {
+    background-color: #f44336;
+}
+
+.task-actions button[name="delete_task"]:hover {
+    background-color: #d32f2f;
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+    .notebook-container {
+        width: 95%;
+    }
+}

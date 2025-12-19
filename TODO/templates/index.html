@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My To-Do Notebook</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="notebook-container">
+        <header>
+            <h1>📒 My To-Do Notebook</h1>
+        </header>
+
+        <!-- Add Task -->
+        <form class="add-task" method="POST">
+            <input type="text" name="tasks" placeholder="Add new tasks separated by commas" required>
+            <button type="submit" name="add_task">➕ Add</button>
+        </form>
+
+        <!-- Task List -->
+        <ul class="task-list">
+            {% for task in todo %}
+            <li>
+                <label>
+                    <input type="checkbox" {% if '(marked as read.)' in task %}checked{% endif %} disabled>
+                    <span class="task-text {% if '(marked as read.)' in task %}completed{% endif %}">{{ task }}</span>
+                </label>
+                <form method="POST" class="task-actions">
+                    <input type="hidden" name="task_index" value="{{ loop.index0 }}">
+                    <input type="hidden" name="status">
+                    <button type="submit" name="update_status" value="completed" onclick="this.form.status.value='completed'">✅ Done</button>
+                    <button type="submit" name="update_status" value="pending" onclick="this.form.status.value='pending'">⏳ Pending</button>
+                    <button type="submit" name="delete_task">🗑️ Delete</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
